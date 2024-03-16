@@ -6,7 +6,11 @@ function App() {
 
   return (
     <div className='w-[90%] mx-auto my-12'>
-        <Header></Header>
+      {/* header section start */}
+      <Header></Header>
+      {/* header section end */}
+
+
     </div>
   )
 }

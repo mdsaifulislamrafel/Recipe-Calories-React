@@ -40,7 +40,9 @@ const Header = () => {
                     </div>
                 </div>
             </div>
+            {/* banner section start */}
             <Banner></Banner>
+            {/* banner section end */}
         </div>
     );
 };
