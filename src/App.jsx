@@ -6,6 +6,7 @@ import RecipesDetails from './RecipesDetails/RecipesDetails'
 
 function App() {
   const [recipes, setRecipe] = useState([]);
+  const [Currently, setCurrently] = useState([]);
 
   const handleRecipe = (recipe) => {
     const isExist = recipes.find(pd => pd.id === recipe.id);
@@ -18,6 +19,11 @@ function App() {
 
   const handleDelete = (id) => {
     const deleteRecipe = recipes.filter(pd => pd.id !== id.id);
+    const cookies = recipes.find(rec => rec.id === id.id);
+    if (cookies) {
+        const newRes = [...Currently, cookies];
+        setCurrently(newRes);
+    }
     setRecipe(deleteRecipe);
     
   };
@@ -33,7 +39,7 @@ function App() {
         {/* all recipes data */}
         <Recipes handleRecipe={handleRecipe}></Recipes>
         {/* single recipe data */}
-        <RecipesDetails handleDelete={handleDelete} recipes={recipes}></RecipesDetails>
+        <RecipesDetails handleDelete={handleDelete} Currently={Currently} recipes={recipes}></RecipesDetails>
       </div>
       {/* Our Recipes section end */}
     </div>
