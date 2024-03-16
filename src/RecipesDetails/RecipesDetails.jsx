@@ -8,9 +8,10 @@ const RecipesDetails = ({ recipes, handleDelete }) => {
 
                 <div>
                     <table className="table-auto table">
-                        <div className='ml-10'>
+                        <div>
                             <thead>
                                 <tr>
+                                    <th></th>
                                     <th>Name</th>
                                     <th>Time</th>
                                     <th>Calories</th>
