@@ -15,23 +15,23 @@ const Recipes = props => {
     }, [])
     return (
         <div>
-            <div className='grid grid-cols-2 gap-5'>
+            <div className='grid grid-cols-1 lg:grid-cols-2 gap-5'>
                 {
                     recipe.map(item => {
                         return (
-                            <div key={item.id} className='h-[72vh] '>
+                            <div key={item.id} className='lg:h-[75vh] '>
                                 <div className="card card-compact bg-base-100 shadow-xl p-5 border-2">
                                     <figure><img src={item.image} alt="Shoes" /></figure>
                                     <div className="card-body">
-                                        <h2 className="card-title">{item.name}</h2>
+                                        <h2 className="card-title text-xl font-bold">{item.name}</h2>
                                         <p>{item.description}</p>
-                                        <p>Ingredients : {item.ingredients.length}</p>
+                                        <p className='font-bold text-xl'>Ingredients : {item.ingredients.length}</p>
                                         <ul className='list-disc'>
                                             {
                                                 item.ingredients.slice(0, 3).map((pd, index) => {
                                                     return (
                                                         <div key={index}>
-                                                            <li>{pd.ingredient_name}, {pd.quantity}</li>
+                                                            <li className='text-sm font-medium'>{pd.ingredient_name}, {pd.quantity}</li>
                                                         </div>
                                                     )
                                                 })

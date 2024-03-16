@@ -13,7 +13,7 @@ function App() {
       {/* header section end */}
 
       {/* Our Recipes section start */}
-      <div className='my-10 flex justify-between gap-8'>
+      <div className='my-10 flex-1 lg:flex lg:justify-between space-y-8 lg:gap-8'>
           <Recipes></Recipes>
           <RecipesDetails></RecipesDetails>
       </div>
