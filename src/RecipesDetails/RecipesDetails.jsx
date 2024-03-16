@@ -1,18 +1,48 @@
 import PropTypes from 'prop-types';
 
-const RecipesDetails = props => {
+const RecipesDetails = ({ recipes, handleDelete }) => {
     return (
-        <div>
-            <div className="card card-compact bg-base-100 shadow-xl">
-                <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-                <div className="card-body">
-                    <h2 className="card-title">Shoes!</h2>
-                    <p>If a dog chews shoes whose shoes does he choose?</p>
-                    <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Buy Now</button>
-                    </div>
+        <div className='lg:w-4/12'>
+            <div className='border-2 p-5'>
+                <h2 className='text-2xl text-center font-semibold'>Want to cook : {recipes.length}</h2>
+
+                <div>
+                    <table className="table-auto table">
+                        <div className='ml-10'>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Time</th>
+                                    <th>Calories</th>
+                                </tr>
+                            </thead>
+                        </div>
+                        <div>
+                            <tbody>
+                                {
+                                    recipes.map((recipe, index) => {
+                                        return (
+                                            <tr key={index}>
+                                                <div className='bg-gray-400 mb-5 rounded-xl'>
+                                                    <td>{index + 1}</td>
+                                                    <td>{recipe.name}</td>
+                                                    <td>{recipe.preparing_time}</td>
+                                                    <td>{recipe.calories}</td>
+                                                    <td><button className='btn' onClick={() => handleDelete(recipe)}>button</button></td>
+                                                </div>
+                                            </tr>
+                                        )
+                                    })
+                                }
+                            </tbody>
+                        </div>
+
+
+
+                    </table>
                 </div>
             </div>
+
         </div>
     );
 };

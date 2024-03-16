@@ -4,7 +4,7 @@ import { CiClock1 } from "react-icons/ci";
 import { AiTwotoneFire } from "react-icons/ai";
 
 
-const Recipes = props => {
+const Recipes = ({ handleRecipe }) => {
     const [recipe, setRecipe] = useState([]);
     useEffect(() => {
         fetch('feckData.json')
@@ -14,13 +14,14 @@ const Recipes = props => {
             })
     }, [])
     return (
-        <div>
+        <div className='lg:w-8/12'>
+            {/* recipes all added successfully */}
             <div className='grid grid-cols-1 lg:grid-cols-2 gap-5'>
                 {
                     recipe.map(item => {
                         return (
-                            <div key={item.id} className='lg:h-[75vh] '>
-                                <div className="card card-compact bg-base-100 shadow-xl p-5 border-2">
+                            <div key={item.id}>
+                                <div className="card card-compact lg:h-[90%] bg-base-100 shadow-xl p-5 border-2">
                                     <figure><img src={item.image} alt="Shoes" /></figure>
                                     <div className="card-body">
                                         <h2 className="card-title text-xl font-bold">{item.name}</h2>
@@ -43,12 +44,12 @@ const Recipes = props => {
                                                 <p>{item.preparing_time} minutes</p>
                                             </div>
                                             <div className='flex gap-2 items-center'>
-                                                <AiTwotoneFire  className='text-2xl'/>
+                                                <AiTwotoneFire className='text-2xl' />
                                                 <p>{item.calories}</p>
                                             </div>
                                         </div>
                                         <div className="card-actions justify-start">
-                                            <button className="btn btn-primary">Want to Cook</button>
+                                            <button className="btn btn-primary" onClick={() => handleRecipe(item)}>Want to Cook</button>
                                         </div>
                                     </div>
                                 </div>

@@ -1,10 +1,26 @@
+import { useState } from 'react'
 import './App.css'
 import Header from './Header/Header'
 import Recipes from './Recipes/Recipes'
 import RecipesDetails from './RecipesDetails/RecipesDetails'
 
 function App() {
+  const [recipes, setRecipe] = useState([]);
 
+  const handleRecipe = (recipe) => {
+    const isExist = recipes.find(pd => pd.id === recipe.id);
+    if (!isExist) {
+      setRecipe([...recipes, recipe]);
+    } else {
+      alert('already exists')
+    }
+  };
+
+  const handleDelete = (id) => {
+    const deleteRecipe = recipes.filter(pd => pd.id !== id.id);
+    setRecipe(deleteRecipe);
+    
+  };
 
   return (
     <div className='w-[90%] mx-auto my-12'>
@@ -14,8 +30,10 @@ function App() {
 
       {/* Our Recipes section start */}
       <div className='my-10 flex-1 lg:flex lg:justify-between space-y-8 lg:gap-8'>
-          <Recipes></Recipes>
-          <RecipesDetails></RecipesDetails>
+        {/* all recipes data */}
+        <Recipes handleRecipe={handleRecipe}></Recipes>
+        {/* single recipe data */}
+        <RecipesDetails handleDelete={handleDelete} recipes={recipes}></RecipesDetails>
       </div>
       {/* Our Recipes section end */}
     </div>
