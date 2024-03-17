@@ -63,7 +63,7 @@ const Recipes = ({ handleRecipe }) => {
 };
 
 Recipes.propTypes = {
-
+    handleRecipe: PropTypes.func.isRequired
 };
 
 export default Recipes;
